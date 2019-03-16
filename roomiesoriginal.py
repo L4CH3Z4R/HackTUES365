@@ -2,9 +2,9 @@ import arcade
 import os
 
 SPRITE_SCALING = 0.446
+SPRITE_SCALING_CHARACTER = 0.3
 SPRITE_NATIVE_SIZE = 128
 SPRITE_SIZE = int(SPRITE_NATIVE_SIZE * SPRITE_SCALING)
-
 SCREEN_WIDTH = SPRITE_SIZE * 24
 SCREEN_HEIGHT = SPRITE_SIZE * 14
 SCREEN_TITLE = "Brainathon"
@@ -260,7 +260,7 @@ class MyGame(arcade.Window):
 
 	def setup(self):
 		# Set up the player
-		self.player_sprite = arcade.Sprite("nigga_wat.png", SPRITE_SCALING)
+		self.player_sprite = arcade.Sprite("CharacterRight2.png", SPRITE_SCALING_CHARACTER)
 		self.player_sprite.center_x = 500
 		self.player_sprite.center_y = 500
 		self.player_list = arcade.SpriteList()
