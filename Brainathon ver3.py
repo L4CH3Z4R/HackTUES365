@@ -230,12 +230,14 @@ def setup_room_2():
 					wall.bottom = y
 					room.wall_list.append(wall)
 	room.background = arcade.load_texture("floor.png")
-	arcade.draw_text("tHurTYoNEFifTYSiXEleVEnTWeLVe", 800, 500, arcade.color.BLACK, 20, width=200, rotation=90.0)
 	door = arcade.Sprite("door.png", SPRITE_SCALING)
-	door.center_x = 1100
-	door.center_y = 450
-	door.left = 22 * SPRITE_SIZE
-	door.bottom = 6 * SPRITE_SIZE and 7 * SPRITE_SIZE
+	door2 = arcade.Sprite("door.png", SPRITE_SCALING)
+	room.wall_list.append(door)
+	room.wall_list.append(door2)
+	door.left = 23 * SPRITE_SIZE
+	door.bottom = 8 * SPRITE_SIZE
+	door2.left = 23 * SPRITE_SIZE
+	door2.bottom = 9 * SPRITE_SIZE
 
 	return room
 
@@ -264,7 +266,7 @@ def setup_room_3():
 				wall = arcade.Sprite("wall.png", SPRITE_SCALING)
 				wall.left = x
 				wall.bottom = y
-				room.wall_list.append(door)
+				room.wall_list.append(wall)
 	room.background = arcade.load_texture("floor.png")
 
 	return room
@@ -370,7 +372,7 @@ class MyGame(arcade.Window):
 
 		self.player_list.draw()
 		if self.current_room == 2:
-			arcade.draw_text("tHurTYoNEFifTYSiXEleVEnTWeLVe", 1000, 450, arcade.color.WHITE, 50, width=1000, align="center", anchor_x="center", anchor_y="center", rotation=90.0)
+			arcade.draw_text("oNetWOSeVEntHRee", 1000, 450, arcade.color.WHITE, 50, width=1000, align="center", anchor_x="center", anchor_y="center", rotation=90.0)
 
 	def on_key_press(self, key, modifiers):
 		if key == arcade.key.UP:
@@ -384,18 +386,19 @@ class MyGame(arcade.Window):
 			
 		if key == arcade.key.F:
 			self.set_fullscreen(not self.fullscreen)
+		
+		if key == arcade.key.K:
+			if key == arcade.key.E:
+				if key == arcade.key.Y:
+					if key == arcade.key.S:
+						door.center_y += 50
+						door2.center_y += 50
 
 	def on_key_release(self, key, modifiers):
 		if key == arcade.key.UP or key == arcade.key.DOWN:
 			self.player_sprite.change_y = 0
 		elif key == arcade.key.LEFT or key == arcade.key.RIGHT:
 			self.player_sprite.change_x = 0
-		
-		if key == 3 and key == 1:
-			if key == 5 and key == 6:
-				if key == 1 and key == 1:
-					if key == 1 and key == 2:
-						self.door.center_y += 100
 						
 	def update(self, delta_time):
 		self.physics_engine.update()
