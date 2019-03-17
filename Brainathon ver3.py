@@ -19,6 +19,7 @@ class Room:
 
 		# This holds the background images. If you don't want changing background images, you can delete this part.
 		self.background = None
+		self.time_elapsed = 0.0
 
 
 def setup_room_0():
@@ -373,6 +374,11 @@ class MyGame(arcade.Window):
 		self.player_list.draw()
 		if self.current_room == 2:
 			arcade.draw_text("oNetWOSeVEntHRee", 1000, 450, arcade.color.WHITE, 50, width=1000, align="center", anchor_x="center", anchor_y="center", rotation=90.0)
+		
+		start_y = 20
+		start_x = 50
+		arcade.draw_point(start_x, start_y, arcade.color.BLUE, 5)
+		arcade.draw_text(f"Time elapsed: {self.time_elapsed:7.1f}", start_x, start_y, arcade.color.BLACK, 14)
 
 	def on_key_press(self, key, modifiers):
 		if key == arcade.key.UP:
@@ -442,6 +448,8 @@ class MyGame(arcade.Window):
 			self.current_room = 3
 			self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.rooms[self.current_room].wall_list)
 			self.player_sprite.center_y = SCREEN_HEIGHT
+		
+		self.time_elapsed += delta_time
 
 
 
